@@ -38,7 +38,7 @@ ggplot (sp500, aes(x=date, y=prices))+
         caption = "Fig. 1")
 
 
-# Question 3
+# Question 34
 ## differencing the log of the Prices with a backshift operator of 1
 Rt <-  log10(sp500$prices[(2):length(sp500$prices)])  -
   log10(sp500$prices[1:length(sp500$prices)-1])
@@ -79,13 +79,16 @@ ggplot(data = sp500_difflog, aes(x = prices)) +
 m <- mean (Rt)
 v <- var ( Rt, na.rm = FALSE)
 
-ecdf_func <- ecdf(Rt)
+# ecdf() directly outputs a fucntion, we cannot use it in a data frame. 
+# need a function that outputs a vector hence this step
+ecdf_func <- ecdf(Rt)  
 
 data_ecdf_cdf <- data.frame (
                 x_1 = ecdf_func(Rt),
                 y_1 = pnorm(Rt, mean = m, sd = sqrt(v))
                 )
 
+# plotting the CDF vs ECDF graph with a reference x=y line
 ggplot() +
   geom_point( data = data_ecdf_cdf, aes( x = x_1, y = y_1 ), color ="black", size = 0.5)+
   geom_abline(slope = 1, intercept = 0, color = "red", linetype = "dashed", size = 0.5)+
