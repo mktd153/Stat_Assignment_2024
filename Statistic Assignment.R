@@ -9,7 +9,7 @@ library(fredr)
 # Question 1 & 2
 ## we used our own api key and you can request it from the FRED website
 ### https://fredaccount.stlouisfed.org/apikeys
-fredr_set_key ("")
+fredr_set_key ("xxxxxxxxxxxxxxxxxxx")
 
 # draw data from FRED using the code and then drawing using the series ID
 test <- fredr_series_search_text("sp500")
