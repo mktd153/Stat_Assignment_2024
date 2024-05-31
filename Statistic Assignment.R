@@ -9,7 +9,7 @@ library(fredr)
 # Question 1 & 2
 ## we used our own api key and you can request it from the FRED website
 ### https://fredaccount.stlouisfed.org/apikeys
-fredr_set_key ("467279e44c3e723a9fa904ea4abc907e")
+fredr_set_key ("")
 
 # draw data from FRED using the code and then drawing using the series ID
 test <- fredr_series_search_text("sp500")
@@ -38,7 +38,7 @@ ggplot (sp500, aes(x=date, y=prices))+
         caption = "Fig. 1")
 
 
-# Question 34
+# Question 3
 ## differencing the log of the Prices with a backshift operator of 1
 Rt <-  log10(sp500$prices[(2):length(sp500$prices)])  -
   log10(sp500$prices[1:length(sp500$prices)-1])
